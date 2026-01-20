@@ -7,6 +7,8 @@
                 <input type="text" v-model="project.title"  id="project_name" :placeholder="name_of_the_project" size="45" />
             </div>
 
+            <pm-do-action hook="pm_project_form_after_project_name" :actionData="project"></pm-do-action>
+
             <div class="pm-form-item item project-category">
                 <!-- v-model="project_cat" -->
                 <select v-model="project_category"  id='project_cat' class='chosen-select'>
