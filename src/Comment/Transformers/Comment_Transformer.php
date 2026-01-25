@@ -28,7 +28,21 @@ class Comment_Transformer extends TransformerAbstract {
     ];
 
     public function transform( Comment $item ) {
-        return [
+        // return [
+        //     'id'               => (int) $item->id,
+        //     'content'          => wedevs_pm_get_content( $item->content ),
+        //     'commentable_type' => $item->commentable_type,
+        //     'commentable_id'   => $item->commentable_id,
+        //     'created_at'       => wedevs_pm_format_date( $item->created_at ),
+        //     'updated_at'       => wedevs_pm_format_date( $item->updated_at ),
+        //     'project_id'       => (int) $item->project_id,
+        //     'meta'       => [
+        //         'total_replies' => $item->replies->count(),
+        //     ],
+
+        // ];
+
+        $result = [
             'id'               => (int) $item->id,
             'content'          => wedevs_pm_get_content( $item->content ),
             'commentable_type' => $item->commentable_type,
@@ -39,8 +53,9 @@ class Comment_Transformer extends TransformerAbstract {
             'meta'       => [
                 'total_replies' => $item->replies->count(),
             ],
-
         ];
+
+        return apply_filters( 'wedevs_pm_comment_transform', $result, $item );
     }
 
         /**
