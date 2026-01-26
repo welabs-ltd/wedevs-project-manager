@@ -87,7 +87,7 @@ class Project {
 			return ['data' => $project];
 		}
 
-		return $response;
+		return apply_filters( 'wedevs_pm_projects_get_results_response', $response, $params, $self );
 	}
 
 	/**
@@ -1333,6 +1333,7 @@ class Project {
 	}
 
 	private function orderby() {
+		error_log("orderby");
         global $wpdb;
 
 		$tb_pm_projects    = $wpdb->prefix . 'pm_projects';
