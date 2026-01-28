@@ -1333,7 +1333,6 @@ class Project {
 	}
 
 	private function orderby() {
-		error_log("orderby");
         global $wpdb;
 
 		$tb_pm_projects    = $wpdb->prefix . 'pm_projects';
