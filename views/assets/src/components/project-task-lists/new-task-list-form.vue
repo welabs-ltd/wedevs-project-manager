@@ -155,6 +155,8 @@
                     }
                 }
 
+                pmBus.$emit('pm_before_task_list_form_submit', args.data);
+
                 if(!is_update){
                     self.addList(args);
                 } else {
