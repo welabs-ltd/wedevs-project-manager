@@ -22,7 +22,7 @@
                             <div class="new-list-btn" >
                                 <a v-if="can_create_list  && !isArchivedPage" @click.prevent="showHideListForm('toggle')" href="#" class="list-action-group add-list">
                                     <span class="plus">+</span>
-                                    <span>{{ __('Add Task List', 'wedevs-project-manager') }}</span>
+                                    <span>{{ getAddTaskListLabel() }}</span>
                                 </a>
 
                                 <new-task-list-form v-if="is_active_list_form && can_create_list  && !isArchivedPage"></new-task-list-form>
@@ -1087,7 +1087,13 @@
             closeSingleTaskModal() {
                 this.taskId    = null;
                 this.projectId = null;
-            }
+            },
+
+            getAddTaskListLabel() {
+                return pm_apply_filters(
+                    'pm_add_task_list_label', __('Add Task List', 'wedevs-project-manager') 
+                )
+            },
         },
 
         mounted() {
