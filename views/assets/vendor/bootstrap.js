@@ -310,7 +310,7 @@ function pmUserCanAccess( pagSlug ) {
         return true;
     }
 
-    return false;
+    return pm_apply_filters( 'pm-user-can-access', false );
 }
 
 

@@ -374,6 +374,7 @@ export default {
       } );
 
       items = sortBy( items, ['order'] );
+      items = pm_apply_filters( "pm-project-menu-after_sort", items );
 
       let showNumberOfItems = pm_apply_filters( "pm-show-project-menu-items", 7 );
 
