@@ -10,7 +10,7 @@
                     <h3 class="pm-project-title pm-d-inline pm-pull-left">
                         <router-link 
                             :title="project.title"
-                            :to="{ name: 'task_lists',  params: { project_id: project.id }}"
+                            :to="getProjectTitleLink(project)"
                         >
                             {{ project.title }}
                         </router-link>
@@ -365,6 +365,12 @@
                 }
 
                 this.updateProject(args);
+            },
+
+            getProjectTitleLink (project) {
+                return typeof pm_apply_filters !== 'undefined'
+                    ? pm_apply_filters('pm-project-title-link', { name: 'task_lists', params: { project_id: project.id } }, { project })
+                    : { name: 'task_lists', params: { project_id: project.id } };
             }
         }
     }

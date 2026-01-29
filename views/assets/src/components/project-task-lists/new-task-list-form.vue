@@ -7,6 +7,8 @@
                 <input type="text" class="title-field" required="required" name="tasklist_name" v-model="list.title" :placeholder="task_list_name">
             </div>
 
+            <pm-do-action hook="pm_task_list_after_form_title" :actionData="list" ></pm-do-action>
+
             <div class="item content">
                 <textarea class="description-field" name="tasklist_detail" id="" v-model="list.description" cols="40" rows="2" :placeholder="task_list_details"></textarea>
             </div>
@@ -154,6 +156,8 @@
                         self.listTemplateAction();
                     }
                 }
+                pmBus.$emit('pm_before_task_list_form_submit', args.data);
+
                 pmBus.$emit('pm_before_task_list_form_submit', args.data);
 
                 if(!is_update){

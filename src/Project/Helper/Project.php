@@ -87,7 +87,7 @@ class Project {
 			return ['data' => $project];
 		}
 
-		return $response;
+		return apply_filters( 'wedevs_pm_projects_get_results_response', $response, $params, $self );
 	}
 
 	/**
