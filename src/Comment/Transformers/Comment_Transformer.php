@@ -28,7 +28,7 @@ class Comment_Transformer extends TransformerAbstract {
     ];
 
     public function transform( Comment $item ) {
-        return [
+        $result = [
             'id'               => (int) $item->id,
             'content'          => wedevs_pm_get_content( $item->content ),
             'commentable_type' => $item->commentable_type,
@@ -39,8 +39,9 @@ class Comment_Transformer extends TransformerAbstract {
             'meta'       => [
                 'total_replies' => $item->replies->count(),
             ],
-
         ];
+
+        return apply_filters( 'wedevs_pm_comment_transform', $result, $item );
     }
 
         /**
