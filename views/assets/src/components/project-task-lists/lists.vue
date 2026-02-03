@@ -53,8 +53,8 @@
                             </div>
                         </div>
                         <div :class="!isListFetch ? 'lists-wrap' : ''">
-                            <div 
-                                class="task-field" 
+                            <div
+                                class="task-field deafult-project-task-create-form" 
                                 v-if="can_create_task && !isArchivedPage && parseInt(current_page_number)<=1"
                             >
                                 <new-task-form  

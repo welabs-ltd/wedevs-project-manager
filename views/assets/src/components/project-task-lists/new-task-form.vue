@@ -16,7 +16,7 @@
                         @submit.prevent="taskFormAction()" 
                         action=""
                     >
-                        <div class="fields deafult-project-task-create-form">
+                        <div class="fields">
                             
                             <input 
                                 v-model="task.title"  
