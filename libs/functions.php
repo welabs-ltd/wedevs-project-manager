@@ -904,7 +904,7 @@ function wedevs_pm_default_co_caps() {
 }
 
 function wedevs_pm_default_client_caps() {
-    return [
+    return apply_filters( 'wedevs_pm_default_client_caps', [
         'create_message'         => true,
         'view_private_message'   => false,
         'create_list'            => true,
@@ -915,7 +915,7 @@ function wedevs_pm_default_client_caps() {
         'view_private_milestone' => false,
         'create_file'            => true,
         'view_private_file'      => false
-    ];
+    ] );
 }
 
 function wedevs_pm_get_prepare_format( $ids, $is_string = false ) {
