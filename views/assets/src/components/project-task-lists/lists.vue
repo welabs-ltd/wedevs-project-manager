@@ -215,20 +215,20 @@
                     <div class="filter-title">
                         <div>
                             <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
-                            <span class="active-task-filter">{{__('Task Filter', 'wedevs-project-manager')}}</span>
+                            <span class="active-task-filter">{{ labels.task_filter }}</span>
                         </div>
                     </div>
                     
                     <div class="search-content">
                         <form @submit.prevent="taskFilter()">
                             <div class="margin-top">
-                                <div class="margin-title">{{__('Task Title', 'wedevs-project-manager')}}</div>
+                                <div class="margin-title">{{ labels.task_title }}</div>
                                 <div>
                                     <input class="title-field" type="text" v-model="searchTasktitle">
                                 </div>
                             </div>
                             <div class="margin-top">
-                                <div class="margin-title">{{__('Task List', 'wedevs-project-manager')}}</div>
+                                <div class="margin-title">{{ labels.task_list }}</div>
                                 <div>
                                     <multiselect 
                                         v-model="defaultList" 
@@ -236,11 +236,11 @@
                                         :show-labels="false"
                                         :searchable="true"
                                         :loading="asyncListLoading"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                        :placeholder="labels.type_task_list"
                                         @search-change="asyncFind($event)"
                                         label="title"
                                         track-by="id">
-                                        <span slot="noResult">{{ __( 'No task lists found.', 'wedevs-project-manager' ) }}</span>
+                                        <span slot="noResult">{{ labels.no_result_found }}</span>
                                             
                                     </multiselect> 
                                 </div>
@@ -263,7 +263,7 @@
                                         v-model="defaultUser" 
                                         :options="searchProjectUsers" 
                                         :show-labels="false"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                        :placeholder="labels.type_task_list"
                                         label="display_name"
                                         track-by="id">
                                             
@@ -277,7 +277,7 @@
                                         v-model="dueDate" 
                                         :options="dueDates" 
                                         :show-labels="false"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                        :placeholder="labels.type_task_list"
                                         label="title"
                                         track-by="id">
                                             
@@ -444,6 +444,18 @@
              */
             lists () {
                 return this.$store.state.projectTaskLists.lists;
+            },
+
+            labels() {
+                let defaults = {
+                    task_filter: __('Task Filter', 'wedevs-project-manager'),
+                    task_title: __('Task Title', 'wedevs-project-manager'),
+                    task_list: __('Task List', 'wedevs-project-manager'),
+                    type_task_list: __('Type task list name', 'wedevs-project-manager'),
+                    no_result_found: __( 'No task lists found.', 'wedevs-project-manager' ),
+                };
+
+                return pm.hooks.applyFilters('pm_task_filter_labels', defaults);
             },
 
             listsForFilters () {

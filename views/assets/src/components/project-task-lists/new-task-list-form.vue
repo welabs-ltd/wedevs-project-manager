@@ -71,7 +71,7 @@
          * @return obj
          */
         data: function() {
-            return {
+            let defaults = {
                 tasklist_milestone: this.list.milestone ? this.list.milestone : '-1',
                 show_spinner: false,
                 error: [],
@@ -84,6 +84,8 @@
                 task_list_update: __( 'Update List', 'wedevs-project-manager'),
                 add_list: __( 'Add List', 'wedevs-project-manager')
             };
+
+            return pm.hooks.applyFilters( 'pm_task_list_form_data', defaults );
         },
 
         mixins: [Mixins],
