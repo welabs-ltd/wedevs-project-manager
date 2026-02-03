@@ -67,7 +67,7 @@
 
                             <div class="list-items">
                                 
-                                <ul v-pm-list-sortable v-if="hasSearchContent() && inboxList" :class="filterActiveClass()+ ' pm-todolists'">
+                                <ul v-pm-list-sortable v-if="hasSearchContent() && inboxList" :class="filterActiveClass()+ ' pm-todolists default-project-task-list'">
                                     <li :data-id="inboxList.id" :class="taskListClass(inboxList.id)">
 
                                         <div class="list-content">
