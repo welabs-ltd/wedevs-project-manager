@@ -67,7 +67,7 @@
 
                             <div class="list-items">
                                 
-                                <ul v-pm-list-sortable v-if="hasSearchContent() && inboxList" :class="filterActiveClass()+ ' pm-todolists'">
+                                <ul v-pm-list-sortable v-if="hasSearchContent() && inboxList" :class="filterActiveClass()+ ' pm-todolists default-project-task-list'">
                                     <li :data-id="inboxList.id" :class="taskListClass(inboxList.id)">
 
                                         <div class="list-content">
@@ -97,7 +97,7 @@
                                         </div>
 
                                         <div v-if="inboxList.expand" class="list-description">
-                                            <span>{{ __('This is a system default task list. Any task without an assigned tasklist will appear here.', 'wedevs-project-manager') }}</span>
+                                            <span>{{ __('This is a system default task list. Any task without an assigned tasklist will appear here 2.', 'wedevs-project-manager') }}</span>
                                         </div>
 
                                         <list-tasks 
