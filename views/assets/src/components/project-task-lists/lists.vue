@@ -448,7 +448,7 @@
 
             can_delete_task_list(){
                 return pm_apply_filters(
-                    'pm_task_list_can_delete_list', true 
+                    'pm_task_list_can_delete', true
                 )
             },
 
