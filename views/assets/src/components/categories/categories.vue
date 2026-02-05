@@ -1,6 +1,6 @@
 <template>
     <div class="wrap nosubsub">
-        <h1 class="wp-heading-inline">{{ __( 'Categories', 'wedevs-project-manager') }}</h1>
+        <h1 class="wp-heading-inline">{{ category_title }}</h1>
         <hr class="wp-header-end">
         <div v-if="!isFetchCategories" class="pm-data-load-before" >
             <div class="loadmoreanimation">
@@ -20,7 +20,7 @@
                 <div class="col-wrap">
 
                     <div class="form-wrap">
-                        <h2>{{ __( 'Add New Category', 'wedevs-project-manager') }}</h2>
+                        <h2>{{ add_new_category }}</h2>
                         <form @submit.prevent="categoryFormAction()" id="addtag" method="post" action="edit-tags.php" class="validate" >
                             
                             <div class="form-field form-required term-name-wrap">
@@ -121,7 +121,7 @@
                                     </td>
                                 </tr>   
                                 <tr v-if="!categories.length" class="no-items">
-                                    <td class="colspanchange" colspan="3">{{ __( 'No categories found.', 'wedevs-project-manager' ) }}</td>
+                                    <td class="colspanchange" colspan="3">{{ no_category_found }}</td>
                                 </tr>
                             </tbody>
 
@@ -227,7 +227,7 @@
         },
 
         data () {
-            return {
+            let defaults = {
                 title: '',
                 description: '',
                 submit_disabled: false,
@@ -237,7 +237,11 @@
                 select_all: false,
                 show_spinner: false,
                 add_new_category: __( 'Add New Category', 'wedevs-project-manager'),
-            }
+                category_title: __('Categories', 'wedevs-project-manager'),
+                no_category_found: __( 'No categories found.', 'wedevs-project-manager'),
+            };
+
+            return pm.hooks.applyFilters( 'pm_category_form_data', defaults );
         },
         watch: {
             delete_items ( value ) {
