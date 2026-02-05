@@ -157,7 +157,7 @@
                                                                                 <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
                                                                             </a>
                                                                         </li>
-                                                                        <li>
+                                                                        <li v-if="can_delete_task_list">
                                                                             <a @click.prevent="deleteSelfList( list )" class="li-a" href="#">
                                                                                 <span class="icon-pm-delete"></span>
                                                                                 <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
@@ -444,6 +444,12 @@
              */
             lists () {
                 return this.$store.state.projectTaskLists.lists;
+            },
+
+            can_delete_task_list(){
+                return pm_apply_filters(
+                    'pm_task_list_can_delete_list', true 
+                )
             },
 
             labels() {
