@@ -64,7 +64,7 @@
                                             <span>{{ __('Make Public', 'wedevs-project-manager') }}</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li v-if="user_can_duplicate_task">
                                         <a @click.prevent="taskDuplicate(task.id)" class="li-a" href="#">
                                             <span class="flaticon-pm-copy-files"></span>
                                             <span>{{ __('Duplicate', 'wedevs-project-manager') }}</span>
@@ -236,7 +236,13 @@
             },
             project () {
                 return this.$store.state.project;
-            }
+            },
+
+            user_can_duplicate_task(){
+                return pm_apply_filters(
+                    'pm_user_can_duplicate_task', true 
+                )
+            },
         },
         
         methods: {
