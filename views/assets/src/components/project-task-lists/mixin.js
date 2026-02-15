@@ -39,10 +39,10 @@ var PM_TaskList_Mixin = {
             return this.$store.state.projectTaskLists.is_single_task;
         },
         can_create_list () {
-            return this.user_can("create_list");
+            return pm_apply_filters( 'pm_task_list_can_create', this.user_can("create_list"));
         },
         can_create_task () {
-            return this.user_can("create_task");
+            return pm_apply_filters( 'pm_task_can_create', this.user_can("create_task"));
         },
         isArchivedPage () {
             return this.$route.name == 'task_lists_archive' || this.$route.name == 'task_lists_archive_pagination'
